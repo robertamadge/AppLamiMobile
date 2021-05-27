@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity} from 'react-native';
+import { View, StyleSheet, Text, Image, TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Input } from 'react-native-elements';
@@ -96,7 +96,7 @@ export function CarouselItem (props: CarouselItemProps) {
     <TouchableOpacity onPress={props.onPress}>
       <View>
         <Image source={props.image} style={{width:250, height: 120, borderRadius:20}} />
-        <Text style={{color:'white', textAlign: 'center', fontSize:15, fontWeight: '500', marginTop:2}}>{props.text}</Text>
+        <Text style={{color:'white', textAlign: 'center', fontSize:15, fontWeight: 'bold', marginTop:2}}>{props.text}</Text>
       </View>
     </TouchableOpacity>
   );

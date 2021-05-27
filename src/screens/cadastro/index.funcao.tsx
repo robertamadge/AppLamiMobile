@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { View, Text, ImageBackground, Image, StyleSheet, ScrollView, } from 'react-native';
 import { Button } from 'react-native-elements';
-import { Input } from 'react-native-elements/dist/input/Input';
-import { Header } from 'react-native-elements';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import { InputField } from './components';
+import { useNavigation } from '@react-navigation/core';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { ToolBar } from '../../components/toolbar';
 
 export interface CadastroScreenProps {
 }
 
 export default function CadastroScreen (props: CadastroScreenProps) {
+
+    const nav = useNavigation();
     return (
         <ImageBackground source={require('../../img/backsoft.png')} style={styles.imgbackground}>
-          <Header containerStyle={{backgroundColor:'#rgba(237, 121, 95, 0.7)'}} leftComponent={{ icon: 'menu', color: 'white' }}
-                    centerComponent={{ text: 'LAMI', style: { color: 'white' } }}
-                    rightComponent={{ icon: 'home', color: 'white' }}/>
+        <ToolBar back/>
         <ScrollView>
         <View style={styles.container}>
           <Image source={require('../../img/lamilogobranco.png')} style={styles.imgLami}/>
@@ -23,7 +24,13 @@ export default function CadastroScreen (props: CadastroScreenProps) {
               <InputField texto="Sobrenome"></InputField>
               <InputField texto="E-mail" icon='person-outline'></InputField>
               <InputField texto="Senha" icon='https' senha={true}></InputField>
-              </View>
+            </View>
+            
+          <View>
+            <TouchableOpacity onPress={() => nav.navigate('LoginCadastro')}>
+              <Text style={styles.textoClique}>Clique aqui se já possui login</Text>
+            </TouchableOpacity>
+          </View>
 
           <View style={{flexDirection: 'row'}}>
             <Button type="solid" containerStyle={{width: '40%', marginTop: 5, borderRadius: 20, marginRight: 10}} 
@@ -61,8 +68,10 @@ const styles = StyleSheet.create({
     textoClique:{
       color: 'white',
       fontSize: 12,
+      textDecorationLine: 'underline',
       textAlign: 'center',
       marginTop: 5,
+      marginBottom:10
     },
     textoLami: {
       color: 'white',

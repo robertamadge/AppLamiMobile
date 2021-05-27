@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Input } from 'react-native-elements/dist/input/Input';
 
 export interface InputFieldProps {
@@ -16,8 +16,6 @@ export function InputField (props: InputFieldProps) {
     );
 }
 
-
-
 const styles = StyleSheet.create({
   inputText: {
     backgroundColor: '#rgba(237, 121, 95, 0.6)',
@@ -30,6 +28,4 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
   },
-  
-
 });
