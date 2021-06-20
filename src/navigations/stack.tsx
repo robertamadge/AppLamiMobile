@@ -13,3 +13,4 @@ export const TelasSecundariasNavigation = () => {
     </Stack.Navigator>
   )
 }
+

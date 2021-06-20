@@ -4,16 +4,18 @@ import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Card } from 'react-native-elements/dist/card/Card';
 import { Input } from 'react-native-elements';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 // ========================================== CARDS =========================================================//
 export interface CardsHomeProps {
     texto?:string;
-    novoTextoServidor(texto:string):any;
     icon?:string;
     sourceimg?:any;
 }
 
 export function CardsHome (props: CardsHomeProps) {
+  const nav = useNavigation();
+  
     return (
       <View>
         <Card containerStyle={stylesCards.cards}>
@@ -21,7 +23,7 @@ export function CardsHome (props: CardsHomeProps) {
 
              <Text style={stylesCards.textoClique}>{props.texto}</Text>
              
-             <Button title='Saiba mais' style={stylesCards.estilo} onPress={() => props.novoTextoServidor('Saiba mais')}
+             <Button title='Saiba mais' style={stylesCards.estilo} onPress={() => nav.navigate('Catálogo')}
                 icon={{name:props.icon, color:'white'}} />
         </Card>
         

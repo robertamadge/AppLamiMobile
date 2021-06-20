@@ -3,6 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Input } from 'react-native-elements/dist/input/Input';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 
 
 // ========================================== BUTTON =========================================================//
@@ -12,24 +13,24 @@ export interface SearchBarProps {}
 export interface ButtonCatalogoProps {
     texto?:string;
     icon?:string;
-    onPress(): any;
+    onPress?(): void;
 }
 
 export function ButtonCatalogo (props: ButtonCatalogoProps) {
-   
+    const nav = useNavigation();
 
     return (
-            <View>
-                <Button style={styles.estilo} title="Ver Mais" onPress={()=> props.onPress()}
-                        icon={{name:props.icon, color:'white', type:'ionicon'}} />
-            </View>
+    <View>
+        <Button title='Comprar' style={styles.estilo} onPress={() => nav.navigate('Check-In')} 
+                icon={{name:props.icon, color:'white', type:'ionicon'}} />
+    </View>
     );
 }
 
 const styles = StyleSheet.create({
     estilo: {
         width: '95%',
-        marginTop: 15, 
+        marginTop: 5, 
         borderRadius: 20,
         marginRight: 10, 
         alignSelf:'center',

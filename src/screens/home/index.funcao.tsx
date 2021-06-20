@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, ImageBackground, Image, StyleSheet, ScrollView, Share } from 'react-native';
 import { CardsHome, CarouselItem } from './components';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import Carousel  from 'react-native-snap-carousel';
 import { Divider } from 'react-native-elements/dist/divider/Divider';
 import { useNavigation, useRoute } from '@react-navigation/core';
 import { ToolBar } from '../../components/toolbar';
+import { Button } from 'react-native-elements/dist/buttons/Button';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 export interface HomeScreenProps {}
 
@@ -20,11 +22,23 @@ export function HomeScreen (props: HomeScreenProps) {
 
     const nav = useNavigation();
     const home = useRoute();
+    const netInfo = useNetInfo();
+
+    const share = () =>{
+       Share.share({message:"Escolha entre as opções abaixo:"});
+       {/*Conexão*/}
+       console.log(netInfo.isConnected)
+       console.log(netInfo.type)
+    }
     
 
     return (
         <ImageBackground source={require('../../img/backsoft.png')} style={styles.imgbackground}>
          <ToolBar menu />
+
+         <Button style={styles.estilo} onPress={share} icon={{name:"open-in-new", color:'white'}} title="Compartilhe essa página"></Button>
+
+
             <ScrollView>
             <View style={styles.container}>
               <Image source={require('../../img/headersoft.png')} style={styles.imgLami}/>
@@ -47,17 +61,14 @@ export function HomeScreen (props: HomeScreenProps) {
               <CardsHome 
                 texto="Nós separamos aqui as melhores novidades"
                 sourceimg={require('./../../img/fotoHome.png')}
-                novoTextoServidor={(texto) => console.log(texto)} 
                 icon='add'/>
               <CardsHome 
                 texto="Uma seleção de anéis para todos os gostos"
                 sourceimg={require('./../../img/fotoHome2.png')}
-                novoTextoServidor={(texto) => console.log(texto)} 
                 icon='add'/>
               <CardsHome 
                 texto="Variedade de brincos!"
                 sourceimg={require('./../../img/fotoHome3.png')}
-                novoTextoServidor={(texto) => console.log(texto)} 
                 icon='add'/>
               <View style={{flexDirection:'row', marginTop:10}}>
                 <Icon name='logo-instagram' color='white' type='ionicon' style={{marginRight: 5}} onPress={() => console.log('https://www.instagram.com/loja_lami/')}/>
@@ -92,5 +103,10 @@ const styles = StyleSheet.create({
         fontSize: 12,
         textAlign: 'center',
         marginTop: 5,
-    }
+    },
+    estilo: {
+      width: '100%',
+      alignSelf:'center',
+      backgroundColor:'#ED795F',
+  },
 });

@@ -9,18 +9,16 @@ import { useNavigation } from '@react-navigation/core';
 import { ToolBar } from '../../components/toolbar';
 
 
-export interface CatalogoScreenProps {
+export interface TornozeleirasScreenProps {
  
 }
 
-export function CatalogoScreen (props: CatalogoScreenProps) {
+export function TornozeleirasScreen (props: TornozeleirasScreenProps) {
 
     const search = (texto: string)=> {
     console.log(texto);
   }
-
   const nav = useNavigation();
-  
   return (
     <ImageBackground source={require('../../img/backsoft.png')} style={styles.imgbackground}>
         <ToolBar menu/>
@@ -33,42 +31,20 @@ export function CatalogoScreen (props: CatalogoScreenProps) {
         
         <View style={{flexDirection:'column'}}>
           <View style={{flexDirection:'row'}}>
-
-          <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
-              <Text style={styles.textoClique}>Anéis</Text>        
-              <ButtonCatalogo icon='heart-outline' onPress={() => nav.navigate('Aneis')}/>
-            </Card>
             <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
-              <Text style={styles.textoClique}>Brincos</Text>           
-              <ButtonCatalogo icon='heart-outline' onPress={() => nav.navigate('Brincos')}/>
+              <Image source={require('../../img/tornozeleira.png')} style={styles.imgCard}/>
+              <Text style={styles.textoClique}>Tornozeleira Pedra</Text>
+              <Text style={styles.textoClique}>R$: 10,00</Text>            
+              <ButtonCatalogo icon='cart-outline'/>
             </Card>
-            </View>
 
-            <Divider style={{ backgroundColor: 'white', width: '100%', height: 2, marginBottom: 5 }} />
-
-            <View style={{flexDirection:'row'}}>
-
-              <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
-              <Text style={styles.textoClique}>Colares</Text>            
-              <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Colares')}/>
-            </Card>
             <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
-              <Text style={styles.textoClique}>Pulseiras</Text>           
-              <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Pulseiras')}/>
-            </Card>        
-            </View>
-
-            <View style={{flexDirection:'row'}}>
-              <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
-              <Text style={styles.textoClique}>Tornozeleiras</Text>       
-              <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Tornozeleiras')}/>
+              <Image source={require('../../img/tornozeleira1.png')} style={styles.imgCard}/>
+              <Text style={styles.textoClique}>Tornozeleira Simples </Text>
+              <Text style={styles.textoClique}>R$: 10,00</Text>             
+               <ButtonCatalogo icon='cart-outline'/>
             </Card>
-            </View>
+          </View>         
         </View>
 
           <View style={{flexDirection:'row', marginTop:10}}>
@@ -101,9 +77,9 @@ const styles = StyleSheet.create({
       },
       textoClique:{
         color: 'white',
-        fontSize: 15,
+        fontSize: 12,
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 5,
       },
       textoLami: {
         color: 'white',
@@ -111,18 +87,18 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 5,
       },
-        cards: {
-            backgroundColor: '#rgba(245, 205, 142, 0.2)',
-            color: 'white',
-            alignItems: 'baseline',
-            borderRadius: 20,
-            borderColor: 'white',
-            width: '45%',
-            height: 250,
-            padding: 15,
-            marginTop: 10,
-            marginRight: 10,
-            marginLeft: 10,
+      cards: {
+        backgroundColor: '#rgba(245, 205, 142, 0.2)',
+        color: 'white',
+        alignItems: 'baseline',
+        borderRadius: 20,
+        borderColor: 'white',
+        width: '45%',
+        height: 250,
+        padding: 15,
+        marginTop: 10,
+        marginRight: 10,
+        marginLeft: 10,
       },
       imgCard: {
         width: 130,

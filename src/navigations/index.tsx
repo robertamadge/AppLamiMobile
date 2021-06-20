@@ -2,13 +2,20 @@ import  React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
 import { HomeScreen } from '../screens/home/index.funcao';
-import { CatalogoScreen } from '../screens/catalogo/index.funcao';
 import { TelasSecundariasNavigation } from './stack';
 import { MaterialIcons } from '@expo/vector-icons'
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Card } from 'react-native-elements/dist/card/Card';
+import { CheckInScreen } from '../screens/checkin/index.funcao';
+import { ContatoScreen } from '../screens/contato/index.funcao';
+import { BrincoScreen } from '../screens/brincos/index.funcao';
+import { AneisScreen } from '../screens/aneis/index.funcao';
+import { ColaresScreen } from '../screens/colares/index.funcao';
+import { PulseirasScreen } from '../screens/pulseiras/index.funcao';
+import { TornozeleirasScreen } from '../screens/tornozeleiras/index.funcao';
+import { CatalogoScreen } from '../screens/catalogo/index.funcao';
 
 
 const Drawer = createDrawerNavigator();
@@ -27,15 +34,23 @@ export const MainNavigation = () =>{
              
               <Button title='Saiba mais' style={styles.estilo} onPress={() => props.navigation.navigate('Catálogo')}/>
             </Card>
-            <Icon name='logo-instagram' color='#ED795F' type='ionicon' style={{marginRight: 5, marginTop:170}} onPress={() => console.log('https://www.instagram.com/loja_lami/')}/>
-            <Text style={styles.textoLami}>loja_lami</Text>
-            <Button title='Sair' type='clear' style={styles.estilo} onPress={() => props.navigation.navigate("Home")}></Button>
+            <View style={{flexDirection:'row', marginTop:10, justifyContent:'center'}}>
+              <Icon name='logo-instagram' color='white' type='ionicon' style={{marginRight:5}} onPress={() => console.log('https://www.instagram.com/loja_lami/')}/>
+              <Text style={styles.textoLami}>loja_lami</Text>
+            </View>            
           </View>
           
       )}>
         <Drawer.Screen name="Home" component={HomeScreen} options={{drawerIcon: () => <MaterialIcons name='home' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
         <Drawer.Screen name="Login/Cadastrar" component={TelasSecundariasNavigation} options={{drawerIcon: () => <MaterialIcons name='account-circle' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
-        <Drawer.Screen name="Catálogo" component={CatalogoScreen} options={{drawerIcon: () => <MaterialIcons name='menu-book' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/> 
+        <Drawer.Screen name="Catalogo" component={CatalogoScreen} options={{drawerIcon: () => <MaterialIcons name='menu-book' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Aneis" component={AneisScreen} options={{drawerIcon: () => <MaterialIcons name='favorite-border' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Brincos" component={BrincoScreen} options={{drawerIcon: () => <MaterialIcons name='favorite-border' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Colares" component={ColaresScreen} options={{drawerIcon: () => <MaterialIcons name='favorite-border' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Pulseiras" component={PulseirasScreen} options={{drawerIcon: () => <MaterialIcons name='favorite-border' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Tornozeleiras" component={TornozeleirasScreen} options={{drawerIcon: () => <MaterialIcons name='favorite-border' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Check-In" component={CheckInScreen} options={{drawerIcon: () => <MaterialIcons name='shopping-cart' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>
+        <Drawer.Screen name="Contato" component={ContatoScreen} options={{drawerIcon: () => <MaterialIcons name='email' size={20} color='#rgba(237, 121, 95, 0.7)'/>}}/>  
       </Drawer.Navigator>
     </NavigationContainer>
   )
@@ -43,15 +58,15 @@ export const MainNavigation = () =>{
 
 const styles = StyleSheet.create({
     textoLami: {
-      color: '#ED795F',
+      color: 'white',
       fontSize: 12,
       textAlign: 'center',
-      marginTop: 5,
+      marginTop: 2,
       marginBottom:5
   },
   estilo: {
-    width: '80%',
-    marginTop: 5, 
+    width: '60%',
+    marginTop: 2, 
     borderRadius: 20,
     marginRight: 10, 
     alignSelf:'center',
@@ -65,9 +80,8 @@ cards: {
   borderRadius: 20,
   borderColor: 'white',
   width: '90%',
-  height: 300,
-  padding: 15,
-  marginTop: 10,
+  height: 130,
+  padding: 5,
 },
 textoClique:{
   color: 'white',
@@ -77,9 +91,11 @@ textoClique:{
   fontWeight:'bold'
 },
 imgCard: {
-  width: 220,
-  height: 200,
+  width: 240,
+  height: 50,
   alignContent: 'center',
-  borderRadius: 20,
+  borderRadius: 10,
 },
 });
+
+
