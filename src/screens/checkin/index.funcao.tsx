@@ -133,16 +133,15 @@ export function CheckInScreen (props: CheckInScreenProps) {
                  inputStyle={{color:'white'}} leftIcon={<Icon name='add'color='white' size={20} ></Icon>}/>
        </View>
        
-       <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
-          {firebase.auth().currentUser != null && <Button type="solid" containerStyle={{width: '95%', borderRadius: 20}} 
+       <View style={{flexDirection: 'row', justifyContent:'space-around'}}>
+       
+        <Button type="solid" containerStyle={{width: '45%', borderRadius: 20}} 
                                                           buttonStyle={{backgroundColor:'#A33B24'}} titleStyle={{fontSize: 20, color: '#FCC9BD'}}  
-                                                          title="Inserir" onPress={inserir}/>}
-       </View>
-
-       <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
-       <Button type="solid" containerStyle={{width: '95%', marginTop: 5, borderRadius: 20}} 
-                      buttonStyle={{backgroundColor:'#A33B24'}} titleStyle={{fontSize: 20, color: '#FCC9BD'}}  
-                      title="Buscar" onPress={listaPecas}/>
+                                                          title="Inserir" onPress={inserir}/>
+      
+        <Button type="solid" containerStyle={{width: '45%', borderRadius: 20}} 
+                             buttonStyle={{backgroundColor:'#A33B24'}} titleStyle={{fontSize: 20, color: '#FCC9BD'}}  
+                             title="Buscar" onPress={listaPecas}/>
        </View>
        <View>
             {pecas.map((pecas, index) =>(
