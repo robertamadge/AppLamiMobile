@@ -40,7 +40,7 @@ export function CatalogoScreen (props: CatalogoScreenProps) {
               <ButtonCatalogo icon='heart-outline' onPress={() => nav.navigate('Aneis')}/>
             </Card>
             <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
+              <Image source={require('../../img/brinco2.png')} style={styles.imgCard}/>
               <Text style={styles.textoClique}>Brincos</Text>           
               <ButtonCatalogo icon='heart-outline' onPress={() => nav.navigate('Brincos')}/>
             </Card>
@@ -51,12 +51,12 @@ export function CatalogoScreen (props: CatalogoScreenProps) {
             <View style={{flexDirection:'row'}}>
 
               <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
+              <Image source={require('../../img/colar2.png')} style={styles.imgCard}/>
               <Text style={styles.textoClique}>Colares</Text>            
               <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Colares')}/>
             </Card>
             <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
+              <Image source={require('../../img/pulseira3.png')} style={styles.imgCard}/>
               <Text style={styles.textoClique}>Pulseiras</Text>           
               <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Pulseiras')}/>
             </Card>        
@@ -64,7 +64,7 @@ export function CatalogoScreen (props: CatalogoScreenProps) {
 
             <View style={{flexDirection:'row'}}>
               <Card containerStyle={styles.cards}>
-              <Image source={require('../../img/anel1.png')} style={styles.imgCard}/>
+              <Image source={require('../../img/tornozeleira.png')} style={styles.imgCard}/>
               <Text style={styles.textoClique}>Tornozeleiras</Text>       
               <ButtonCatalogo icon='heart-outline'  onPress={() => nav.navigate('Tornozeleiras')}/>
             </Card>

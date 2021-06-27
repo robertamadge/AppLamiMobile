@@ -9,8 +9,10 @@ export const TelasSecundariasNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="LoginCadastro" component={LoginScreen} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
-        <Stack.Screen name="Cadastro" component={CadastroScreen} />
+        <Stack.Screen name="Cadastro" component={CadastroScreen} />        
     </Stack.Navigator>
   )
 }
+
+
 

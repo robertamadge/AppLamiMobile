@@ -5,7 +5,11 @@ import { Input } from 'react-native-elements/dist/input/Input';
 export interface InputFieldProps {
     icon?:string;
     texto?:string;
+    nome?: string;
+    sobrenome?:string;
     senha?:boolean;
+    onBlur?(): void;
+    onChangeText(texto:string): void;
 }
 
 export function InputField (props: InputFieldProps) {
@@ -13,7 +17,9 @@ export function InputField (props: InputFieldProps) {
       <View>
           <Text style={styles.textoCadastro}>{props.texto}</Text>
           <Input inputContainerStyle={styles.inputArea} inputStyle={{color:'white'}} 
-                leftIcon={{name: props.icon, color:'#FCC9BD'}} secureTextEntry={props.senha}/>
+                leftIcon={{name: props.icon, color:'#FCC9BD'}} secureTextEntry={props.senha}
+                onChangeText={(texto) => props.onChangeText(texto)} 
+                onBlur={props.onBlur}/>
       </View>
     );
 }
@@ -22,7 +28,7 @@ export function InputField (props: InputFieldProps) {
 const styles = StyleSheet.create({
     inputArea: {
         backgroundColor: '#rgba(237, 121, 95, 0.6)',
-        width: '150%',
+        width: '100%',
         height: 50,
         borderRadius: 30,
         paddingLeft: 10,

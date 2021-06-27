@@ -1,30 +1,33 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import  { Pecas } from '../../models/pecas';
 import { Divider } from 'react-native-elements/dist/divider/Divider';
+import 'firebase/firestore';
+import firebase from 'firebase';
 
 export interface CarrinhoProps {
     pecas: Pecas;
     onEditar(pecas: Pecas): void;
-    onExcluir(id?:string): void;
+    onExcluir(pecas: Pecas): void;
 }
 
 export function Carrinho (props: CarrinhoProps) {
 
     const { pecas } = props;
+   
 
     return (
 
             <View>
-            <SwipeRow leftOpenValue={120} stopLeftSwipe={120} disableRightSwipe >
+            <SwipeRow rightOpenValue={-160} stopRightSwipe={-160} disableRightSwipe>
 
                 {/*Oculto*/}
                 <View style={styles.btn}>
                     <Button containerStyle={styles.btnExcluir} 
                          buttonStyle={{borderRadius: 0}} 
-                            title='Excluir' onPress={()=> props.onExcluir(pecas.id)}/>
+                            title='Excluir' onPress={()=> props.onExcluir(pecas)}/>
                     <Button containerStyle={styles.btnEditar} 
                             buttonStyle={{borderRadius: 0}} 
                             title='Editar' onPress={()=> props.onEditar(pecas)}/>
@@ -32,7 +35,7 @@ export function Carrinho (props: CarrinhoProps) {
 
                 <View style={styles.container}>
                     
-                        <Text style={styles.textoContainer}>{pecas.descricao}</Text>
+                        <Text style={styles.textoContainer}>{pecas.nome}</Text>
                         <Text style={styles.textoContainer}>{pecas.preco}</Text>
                 </View>
                 

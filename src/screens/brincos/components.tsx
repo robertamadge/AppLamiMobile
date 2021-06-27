@@ -55,7 +55,7 @@ export interface SearchBarProps {
           inputStyle={{color:'white'}}
           placeholder="O que você está procurando?"
           placeholderTextColor="white"
-          leftIcon={() => <MaterialIcons name="search" style={{color:'white', marginLeft:10}} />}
+          leftIcon={<MaterialIcons name="search" style={{color:'white', marginLeft:10}} />}
           inputContainerStyle={{backgroundColor:'rgba(237, 121, 95, 0.7)', marginBottom:1, borderRadius:30, borderBottomWidth:0, marginVertical: 12}}
         />
       );

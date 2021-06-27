@@ -5,7 +5,6 @@ import { Input } from 'react-native-elements/dist/input/Input';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
 
-
 // ========================================== BUTTON =========================================================//
 
 export interface SearchBarProps {}
@@ -17,8 +16,7 @@ export interface ButtonCatalogoProps {
 }
 
 export function ButtonCatalogo (props: ButtonCatalogoProps) {
-    const nav = useNavigation();
-
+    const nav = useNavigation(); 
     return (
     <View>
         <Button title='Comprar' style={styles.estilo} onPress={() => nav.navigate('Check-In')} 
@@ -55,7 +53,7 @@ export interface SearchBarProps {
           inputStyle={{color:'white'}}
           placeholder="O que você está procurando?"
           placeholderTextColor="white"
-          leftIcon={() => <MaterialIcons name="search" style={{color:'white', marginLeft:10}} />}
+          leftIcon={<MaterialIcons name="search" style={{color:'white', marginLeft:10}} />}
           inputContainerStyle={{backgroundColor:'rgba(237, 121, 95, 0.7)', marginBottom:1, borderRadius:30, borderBottomWidth:0, marginVertical: 12}}
         />
       );

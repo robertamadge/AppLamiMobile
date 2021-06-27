@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, Image, StyleSheet, ScrollView, Share } from 'react-native';
+import { View, Text, ImageBackground, Image, StyleSheet, ScrollView, Share, LogBox } from 'react-native';
 import { CardsHome, CarouselItem } from './components';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 import Carousel  from 'react-native-snap-carousel';
@@ -8,17 +8,25 @@ import { useNavigation, useRoute } from '@react-navigation/core';
 import { ToolBar } from '../../components/toolbar';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { useNetInfo } from '@react-native-community/netinfo';
-
+import firebase from 'firebase';
+import { useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 export interface HomeScreenProps {}
 
 export function HomeScreen (props: HomeScreenProps) {
 
     const [ itensCarousel, setItensCarousel ] = React.useState([
-      {onPress:()=>nav.navigate('Catálogo'), image:require('./../../img/fotoHome4.png'), text:'Anéis'},
-      {onPress:()=>nav.navigate('Catálogo'), image:require('./../../img/fotoHome5.png'), text:'Várias combinações'},
-      {onPress:()=>nav.navigate('Catálogo'), image:require('./../../img/fotoHome6.png'), text:'Conjutos'},
-      {onPress:()=> nav.navigate('Catálogo'), image:require('./../../img/fotoHome7.png'), text:'E muito mais...'}
+      {onPress:()=>nav.navigate('Catalogo'), image:require('./../../img/fotoHome4.png'), text:'Anéis'},
+      {onPress:()=>nav.navigate('Catalogo'), image:require('./../../img/fotoHome5.png'), text:'Várias combinações'},
+      {onPress:()=>nav.navigate('Catalogo'), image:require('./../../img/fotoHome6.png'), text:'Conjutos'},
+      {onPress:()=> nav.navigate('Catalogo'), image:require('./../../img/fotoHome7.png'), text:'E muito mais...'}
     ])
+
+    const [ usuarioEmail, setUsuarioEmail ] = useState<any>('');
+
+    useFocusEffect(() => {
+      setUsuarioEmail(firebase.auth().currentUser?.email);
+    })
 
     const nav = useNavigation();
     const home = useRoute();
@@ -30,7 +38,11 @@ export function HomeScreen (props: HomeScreenProps) {
        console.log(netInfo.isConnected)
        console.log(netInfo.type)
     }
-    
+    const sair = async() => {
+      await firebase.auth().signOut();
+      nav.navigate('Login/Cadastrar');
+    }
+
 
     return (
         <ImageBackground source={require('../../img/backsoft.png')} style={styles.imgbackground}>
@@ -38,7 +50,16 @@ export function HomeScreen (props: HomeScreenProps) {
 
          <Button style={styles.estilo} onPress={share} icon={{name:"open-in-new", color:'white'}} title="Compartilhe essa página"></Button>
 
+         <View style={{flexDirection: 'row', justifyContent:'center', marginTop:5}}>
+            <Text style={styles.emailAutenticado}>{usuarioEmail}</Text>
+         </View>
 
+         <View style={{flexDirection: 'row', justifyContent:'space-evenly'}} >
+           {firebase.auth().currentUser != null && <Button title='Editar' style={styles.btnEditar} onPress={() => nav.navigate('Cadastro')}/>}
+           {firebase.auth().currentUser != null && <Button title='Sair'style={styles.btnSair} onPress={sair} />}            
+         </View>
+          
+         <Divider style={{ backgroundColor: 'white', width: '100%', height: 2 }} />
             <ScrollView>
             <View style={styles.container}>
               <Image source={require('../../img/headersoft.png')} style={styles.imgLami}/>
@@ -109,4 +130,29 @@ const styles = StyleSheet.create({
       alignSelf:'center',
       backgroundColor:'#ED795F',
   },
+    emailAutenticado: {
+      fontSize: 15,
+      color:'white',
+      alignSelf:'center',
+      fontWeight:'bold',
+    },   
+    btnSair:{
+       width:80,
+       height:40, 
+       backgroundColor:'#rgba(237, 121, 95, 0.7)',
+       padding:1,
+       borderRadius:10,
+       marginTop:5,
+       marginBottom:5
+    
+      },
+    btnEditar:{ 
+      width:80,
+      height:40,  
+      backgroundColor:'#ED795F',
+      padding:1,
+      borderRadius:10,
+      marginTop:5,
+      marginBottom:5
+    },
 });

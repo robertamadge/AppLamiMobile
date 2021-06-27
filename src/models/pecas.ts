@@ -1,6 +1,6 @@
 export class Pecas{
 
-    constructor(public descricao:string, public preco:number, public  id?:string){
+    constructor(public nome:string, public preco:number, public  id?:string){
     }
 }
 

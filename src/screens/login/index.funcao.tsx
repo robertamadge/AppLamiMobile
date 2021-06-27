@@ -8,25 +8,32 @@ import { InputField } from './components';
 import { ToolBar } from '../../components/toolbar';
 import { Formik} from 'formik';
 import * as Yup from 'yup';
+import firebase  from 'firebase';
 
 
-export interface LoginScreenProps {}
+export interface LoginScreenProps {
+  email: string;
+  senha: string;
+}
 
 export default function LoginScreen (props: LoginScreenProps) {
 
     const nav = useNavigation()
 
-    const logar = async ({email, senha}:any) => {
-      
-      await new Promise(resolve => setTimeout(resolve, 1000)); 
+    const logar = async (dados: LoginScreenProps) => {
+      console.log(dados)
 
+      firebase.auth().signInWithEmailAndPassword(dados.email, dados.senha)
+        .then(usuario => {
+          nav.navigate('Home');
+        }).catch((error) =>{
+          Alert.alert('Erro ao realizar login, email ou senha incorretos', error.message)
+          console.log(error);
+          console.log('Falhou', dados);
+        })
 
-      if (email == 'robertamadge@gmail.com' && senha == '123456')
-        console.log('Logado com sucesso!');
-      else {
-        console.log('Dados incorretos');
-        Alert.alert("Atenção","Senha ou Email Incorretos");
-      }
+      await new Promise(resolve => setTimeout(resolve, 1000));
+       
     }
     
     return (

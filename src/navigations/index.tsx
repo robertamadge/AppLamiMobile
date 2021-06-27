@@ -1,5 +1,5 @@
 import  React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
 import { HomeScreen } from '../screens/home/index.funcao';
 import { TelasSecundariasNavigation } from './stack';
@@ -21,6 +21,8 @@ import { CatalogoScreen } from '../screens/catalogo/index.funcao';
 const Drawer = createDrawerNavigator();
 
 export const MainNavigation = () =>{
+
+
 
   return (
     <NavigationContainer>
